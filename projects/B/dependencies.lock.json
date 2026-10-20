@@ -1,0 +1,7 @@
+{
+  "format": 1,
+  "python_tested": "3.12.14",
+  "sqlite_tested": "3.53.1",
+  "third_party_dependencies": [],
+  "network_install_required": false
+}

@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "抖音粉丝互动助手 · F盘身份试点",
+  "version": "2.0.0",
+  "description": "本机认证与已保存历史查询。真实页面来源待核验，保留抖音原生聊天。",
+  "minimum_chrome_version": "114",
+  "permissions": ["storage", "alarms"],
+  "optional_permissions": ["webNavigation", "scripting"],
+  "optional_host_permissions": ["https://www.douyin.com/*"],
+  "host_permissions": ["http://127.0.0.1/*"],
+  "background": {"service_worker": "background.js"},
+  "action": {"default_title": "F盘身份试点 · 本机连接", "default_popup": "popup.html"},
+  "content_scripts": [{
+    "matches": ["https://www.douyin.com/chat*"],
+    "js": ["lib/protocol.js", "lib/profile_editor.js", "identity/history_summary.js", "identity/context_guard.js", "identity/profile_navigation.js", "identity/native_binding.js", "identity/native_bridge.js", "adapters/chat.js", "ui/fan_profile.js", "ui/profile_editor.js", "ui/chat_layout.js", "ui/sidebar.js", "content.js"],
+    "run_at": "document_idle", "all_frames": false
+  }, {
+    "matches": ["https://www.douyin.com/chat*"],
+    "js": ["identity/native_main_reader.js"], "world": "MAIN",
+    "run_at": "document_start", "all_frames": false
+  }],
+  "content_security_policy": {"extension_pages": "script-src 'self'; object-src 'none'; connect-src http://127.0.0.1:8801"}
+}

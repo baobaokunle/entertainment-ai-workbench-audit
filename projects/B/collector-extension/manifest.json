@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "B线 · 主播资料采集台",
+  "version": "0.1.8",
+  "description": "独立本机加密保存主播资料与来源证据；手动启动，不发送消息。",
+  "permissions": [
+    "scripting",
+    "tabs",
+    "nativeMessaging"
+  ],
+  "host_permissions": [
+    "https://anchor.douyin.com/*",
+    "https://www.douyin.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "打开B线资料采集台"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; connect-src 'none'"
+  }
+}

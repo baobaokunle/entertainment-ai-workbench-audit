@@ -1,0 +1,8 @@
+{
+  "format": "dfa-python-runtime-lock-1",
+  "python_relative": "runtime/python-3.12.14/python.exe",
+  "python_sha256": "f200a9932953c794bbe8a4f235c34e61c3742ec9dd7a2dafc8aacd64c30d3995",
+  "manifest_sha256": "ef9ce2d42de1a45f721f92ba613e98511a6101169c7a5d47ebb2a05994675ca1",
+  "version": "3.12.14",
+  "bits": 64
+}

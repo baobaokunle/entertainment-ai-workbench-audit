@@ -1,0 +1,11 @@
+[project]
+name = "live-data-poc"
+version = "0.1.0"
+description = "Synthetic, offline-only live data verification POC"
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.live-data-poc]
+contract = "b-live-facts/0.1"
+mode = "synthetic-only"
+entrypoint = "run.py"

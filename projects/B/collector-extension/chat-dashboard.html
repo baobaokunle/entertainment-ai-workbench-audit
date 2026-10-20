@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><title>B线 · 独立聊天采集</title><link rel="stylesheet" href="dashboard.css"></head><body>
+<main style="margin:40px auto;max-width:1100px"><section><a href="launcher.html">← 采集首页</a><h1>聊天记录、图片和表情</h1>
+<p>自动打开已登录的抖音聊天页并加载会话。按原生会话和消息标识核对已有记录，补采最后保存日期当天至本次采集时可读取的新消息；重复文字不再保存，媒体缺项单独补存。</p>
+<p>聊天与主播后台分开存储、分别启停。旧记录无法直接对应的会话保留缺口；不按昵称合并，不承诺平台全部历史。加载聊天可能影响平台已读状态，不会发送消息。</p>
+<p>图片和表情文件本机加密保存；语音保留来源已有转写，未转写则标记。视频不下载。</p>
+<button id="start">开始补采聊天</button> <button id="stop" disabled>停止聊天采集</button> <button id="refresh">查看本机聊天任务</button>
+<p id="state">未开始</p><p id="progress"></p><p id="stats"></p><ul id="events"></ul></section>
+<section><h2>本机聊天任务</h2><p>采集中可查看本窗口保存的内容。若独立聊天助手占用存储，等待它完成后查看；主播后台不受影响。资料访问期限为本次任务建立起 7 天，到期限制查看和导出，不自动删除。</p><div id="runs"></div><p id="previewState"></p><div id="preview"></div><button id="nextPreview" hidden>查看后面的记录</button></section></main>
+<script type="module" src="chat-dashboard.js"></script></body></html>

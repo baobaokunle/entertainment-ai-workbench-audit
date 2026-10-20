@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>助手 · 本机认证</title><link rel="stylesheet" href="popup.css"></head>
+<body><h1>本机互动助手 · F盘试点</h1><p>来源待核验 · 自动采集不可用</p><p id="extension-identity"></p><p id="connection-status" role="status">正在检查本机身份服务…</p><p id="status" role="status">正在读取本机会话…</p>
+<form id="login"><label>一次性本机配对码<input name="pairing_code" type="password" placeholder="粘贴本机窗口复制的临时码" required minlength="43" maxlength="43" pattern="[A-Za-z0-9_\-]{43}" autocomplete="off"></label><p>无需设置或记住密码。首次用本机窗口的临时码配对，之后由此扩展记住。这里不填写抖音密码。</p><button type="submit">配对并连接本机</button></form>
+<section id="session" hidden><p id="identity"></p><p id="queue"></p><button id="retry" type="button">重试待提交观测</button><button id="logout" type="button">断开本次连接</button></section>
+<button id="forget-device" type="button">清除本机配对记忆</button>
+<button id="workbench-connect" type="button" hidden>恢复自动连接</button>
+<section><p id="chat-mount-status" role="status"></p><button id="enable-chat-mount" type="button">开启“启用即显示”</button><p>仅首次需要授权。Chrome授权范围为www.douyin.com；本扩展只向/chat页加载现有侧栏，不刷新、不切会话、不发送消息。原生身份仍独立核验。</p></section>
+<section><p id="pilot-status">身份核对尚未连接。</p><p id="navigation-status" role="status">导航权限尚待核对。</p><button id="pilot-navigation" type="button">允许聊天页面与资料导航核对</button><p>此权限可观察浏览器导航；本助手用它核对当前聊天页面及聊天发起的资料导航，不读取聊天正文。只有点击按钮才向Chrome申请。撤回时可关闭扩展或在Chrome中移除权限。</p></section>
+<p>角色及可见账号由本机登记授予。页面身份未核验时，请继续使用抖音原生聊天。</p><script src="popup.js"></script></body></html>

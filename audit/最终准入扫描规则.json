@@ -1,0 +1,34 @@
+{
+  "format": "final-local-admission-rules-1",
+  "scope": "现有repo及本轮生成报告，禁止跟随链接或读取提及的外部数据",
+  "rules": {
+    "credential_signature": "(?i)(?:sk-[A-Za-z0-9_-]{16,}|(?:gh[pousr]|github_pat)_[A-Za-z0-9_]{20,}|AKIA[A-Z0-9]{16}|AIza[A-Za-z0-9_-]{25,}|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY|eyJ[A-Za-z0-9_-]{12,}\\.[A-Za-z0-9_-]{12,}\\.[A-Za-z0-9_-]{12,})",
+    "identity_shape": "(?:MS4wLjAB[A-Za-z0-9_-]{15,}|(?<![a-zA-Z])[a-p]{32}(?![a-zA-Z])|\\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\\b|\\b\\d+:\\d+:\\d{8,}:\\d{8,}\\b)",
+    "long_number": "(?<!\\w)\\d{9,}(?!\\w)",
+    "opaque_digest": "(?<!\\w)[a-fA-F0-9]{32,}(?!\\w)",
+    "opaque_encoded": "(?<!\\w)[A-Za-z0-9+/=_-]{48,}(?!\\w)",
+    "sensitive_absolute_path": "(?i)(?<![A-Za-z0-9])[A-Z]:[\\\\/](?:Users|ai[\\\\/]|娱乐|Claude|下载)|/Users/[^\\s]+|/home/[^\\s]+",
+    "concrete_private_locator": "(?:batch[-_]20\\d{6}|chat-native-20\\d{6}|runtime/s2-(?:audit|public)/[^\\s\\x22\\x27]*20\\d{6})",
+    "dated_constant": "(?:20\\d{6}|20\\d\\d-\\d\\d-\\d\\d)",
+    "network_reference": "https?://[^\\s\\x22\\x27<>]+",
+    "sensitive_literal_field": "(?i)\\b(?:uid|user_id|owner_uid|peer_uid|sec_uid|conversation_id|conversation_key|nickname|message|text|content|body|password|api_key|token|cookie|secret|signature)[\"']?\\s*[:=]\\s*[\"'][^\"'\\n]+[\"']",
+    "cjk_text": "[\\u4e00-\\u9fff]{2,}",
+    "source_mapping": "(?i)(?:TYPE_REFERENCE|EXCLUDED_SOURCE|CODE_HASH|QUEUE_HASH|source.{0,8}(?:sha|fingerprint)|sha.{0,8}source|private_data|runtime/|原文件|原路径|待最终人工复核)"
+  },
+  "additional_checks": [
+    "实际 stat 的 Windows 属性、单链接计数；PowerShell检查命名数据流",
+    "UTF-8、NUL与排除扩展名/二进制签名",
+    "Python AST/JSON解析，不导入模块",
+    "敏感赋值上下文与中文用途，不仅靠关键字",
+    "长度>=24、熵>=4.2、同时大小写和数字的带引号字符串：结果为编码字母表及Windows协议名",
+    "五份合成变更可重算验证；具体来源定位另外排除",
+    "新材料复扫、最终集合及摘要复核"
+  ],
+  "limitations": [
+    "未读取真实业务数据作对照；不能保证自然语言/编码隐私零漏检",
+    "软件摘要按代码消费对象解释，未联网核验其上游真实性",
+    "不执行采集、业务测试、数据库、服务或模型"
+  ],
+  "raw_matches_saved": false,
+  "network_used": false
+}

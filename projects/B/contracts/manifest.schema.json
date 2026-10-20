@@ -1,0 +1,111 @@
+{
+  "type": "object",
+  "properties": {
+    "contract_version": {
+      "enum": [
+        "b-live-facts/0.1"
+      ]
+    },
+    "package_id": {
+      "type": "string",
+      "maxLength": 68,
+      "pattern": "^syn:[0-9a-f]{64}$"
+    },
+    "producer": {
+      "enum": [
+        "B-S1-offline"
+      ]
+    },
+    "data_class": {
+      "enum": [
+        "synthetic"
+      ]
+    },
+    "generated_at": {
+      "type": "string",
+      "maxLength": 40,
+      "pattern": "^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d(?:\\.\\d+)?(?:Z|[+-]\\d\\d:\\d\\d)$"
+    },
+    "source_artifact": {
+      "type": "string",
+      "maxLength": 100,
+      "pattern": "^syn:[A-Za-z0-9_.:-]+$"
+    },
+    "speech_included": {
+      "enum": [
+        false
+      ]
+    },
+    "input_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "artifact_id": {
+            "type": "string",
+            "maxLength": 100,
+            "pattern": "^syn:[A-Za-z0-9_.:-]+$"
+          },
+          "sha256": {
+            "type": "string",
+            "maxLength": 64,
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "artifact_id",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 10000
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "rows": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4194304
+          },
+          "sha256": {
+            "type": "string",
+            "maxLength": 64,
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "name",
+          "rows",
+          "bytes",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 20
+    }
+  },
+  "required": [
+    "contract_version",
+    "package_id",
+    "producer",
+    "data_class",
+    "generated_at",
+    "source_artifact",
+    "speech_included",
+    "input_artifacts",
+    "files"
+  ],
+  "additionalProperties": false
+}
